@@ -1,0 +1,671 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="color-scheme" content="light dark" />
+<link rel="icon" href="data:," />
+<title>カスハラ準備度チェック｜飲食店向け・10問セルフチェック</title>
+<meta name="description" content="飲食店の経営者・店長向け。カスタマーハラスメント対策の準備度を10問で確認する無料セルフチェックです。" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;800&family=Noto+Serif+JP:wght@700;800&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --bg:#f4f6f4;
+    --surface:#ffffff;
+    --surface-2:#eef3f0;
+    --ink:#18211d;
+    --ink-2:#3d4a44;
+    --muted:#65736c;
+    --line:#d9e0db;
+    --line-strong:#b9c6be;
+    --accent:#0e6b5e;
+    --accent-strong:#095448;
+    --accent-soft:#e3f0ec;
+    --amber:#9a5b00;
+    --amber-bg:#fdf3e0;
+    --red:#a83226;
+    --red-bg:#fbeae8;
+    --green:#1a7a3c;
+    --green-bg:#e6f3e9;
+    --shadow:0 1px 2px rgba(20,35,29,.06),0 8px 24px rgba(20,35,29,.06);
+    --radius:16px;
+  }
+  @media (prefers-color-scheme: dark){
+    :root{
+      --bg:#101613;
+      --surface:#1a221e;
+      --surface-2:#222c27;
+      --ink:#e9efec;
+      --ink-2:#c3cec8;
+      --muted:#93a39a;
+      --line:#2e3b34;
+      --line-strong:#46564d;
+      --accent:#3cb8a4;
+      --accent-strong:#7fd6c6;
+      --accent-soft:#17332d;
+      --amber:#e8b45a;
+      --amber-bg:#33290f;
+      --red:#f0927f;
+      --red-bg:#3a1f1b;
+      --green:#7bc98f;
+      --green-bg:#1c2f22;
+      --shadow:0 1px 2px rgba(0,0,0,.3),0 8px 24px rgba(0,0,0,.25);
+    }
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  @media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto} *{transition:none!important} }
+  body{
+    margin:0;background:var(--bg);color:var(--ink);
+    font-family:"Noto Sans JP",-apple-system,BlinkMacSystemFont,"Hiragino Sans","Hiragino Kaku Gothic ProN",sans-serif;
+    font-size:16px;line-height:1.75;-webkit-font-smoothing:antialiased;
+  }
+  a{color:var(--accent-strong);text-underline-offset:3px}
+  button{font:inherit;cursor:pointer}
+  .wrap{max-width:780px;margin:0 auto;padding:0 18px 120px}
+
+  /* ---------- Hero ---------- */
+  .hero{padding:36px 0 8px}
+  .hero-tag{
+    display:inline-flex;align-items:center;gap:8px;
+    font-size:13px;font-weight:700;letter-spacing:.04em;
+    color:var(--accent-strong);background:var(--accent-soft);
+    border:1px solid var(--line);border-radius:999px;padding:5px 14px;
+  }
+  .hero-tag::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--accent);flex:none}
+  h1{
+    font-family:"Noto Serif JP",serif;font-weight:800;
+    font-size:clamp(30px,7.2vw,44px);line-height:1.3;letter-spacing:.01em;
+    margin:18px 0 12px;
+  }
+  h1 .accent{color:var(--accent)}
+  .lead{font-size:16.5px;color:var(--ink-2);margin:0 0 20px;max-width:640px}
+  .lead strong{color:var(--ink)}
+  .chips{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 22px;padding:0;list-style:none}
+  .chips li{
+    font-size:13.5px;font-weight:500;color:var(--ink-2);
+    background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:6px 14px;
+  }
+  .chips b{color:var(--ink);font-weight:700}
+
+  .law-note{
+    background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);
+    padding:18px 20px;box-shadow:var(--shadow);
+  }
+  .law-note h2{font-size:15px;margin:0 0 6px;display:flex;align-items:center;gap:8px}
+  .law-note h2 .badge{
+    font-size:11.5px;font-weight:800;letter-spacing:.05em;color:#fff;background:var(--accent);
+    border-radius:6px;padding:2px 8px;flex:none;
+  }
+  @media (prefers-color-scheme: dark){ .law-note h2 .badge{color:#0b1512} }
+  .law-note p{margin:0;font-size:14.5px;color:var(--ink-2)}
+  .law-note p + p{margin-top:6px}
+
+  /* ---------- Progress ---------- */
+  .progress-sticky{
+    position:sticky;top:0;z-index:20;
+    background:color-mix(in srgb, var(--bg) 88%, transparent);
+    backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
+    padding:14px 0 10px;margin-top:22px;
+  }
+  .progress-head{display:flex;justify-content:space-between;align-items:baseline;font-size:13.5px;color:var(--muted);margin-bottom:7px}
+  .progress-head b{color:var(--ink);font-size:15px}
+  .progress-track{height:10px;border-radius:999px;background:var(--surface-2);border:1px solid var(--line);overflow:hidden}
+  .progress-fill{height:100%;width:0%;background:var(--accent);border-radius:999px;transition:width .3s ease}
+
+  /* ---------- Questions ---------- */
+  .q-list{display:flex;flex-direction:column;gap:16px;margin-top:8px}
+  .q-card{
+    background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);
+    padding:20px;box-shadow:var(--shadow);
+  }
+  .q-card.is-missing{border-color:var(--red);box-shadow:0 0 0 2px var(--red-bg)}
+  .q-top{display:flex;align-items:flex-start;gap:12px}
+  .q-num{
+    flex:none;width:34px;height:34px;border-radius:50%;
+    background:var(--surface-2);border:1px solid var(--line-strong);
+    display:flex;align-items:center;justify-content:center;
+    font-weight:800;font-size:15px;color:var(--ink-2);margin-top:2px;
+  }
+  .q-card.is-answered .q-num{background:var(--accent);border-color:var(--accent);color:#fff}
+  @media (prefers-color-scheme: dark){ .q-card.is-answered .q-num{color:#0b1512} }
+  .q-body{flex:1;min-width:0}
+  .q-root{
+    display:inline-block;font-size:11.5px;font-weight:700;letter-spacing:.03em;
+    color:var(--accent-strong);background:var(--accent-soft);
+    border-radius:6px;padding:1px 8px;margin-bottom:6px;
+  }
+  .q-text{font-size:16.5px;font-weight:700;line-height:1.6;margin:0}
+  .q-missing-msg{display:none;font-size:13px;color:var(--red);font-weight:700;margin-top:8px}
+  .q-card.is-missing .q-missing-msg{display:block}
+
+  .opts{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:16px}
+  .opt{
+    display:flex;align-items:center;justify-content:center;gap:7px;
+    min-height:52px;padding:10px 6px;border:1.5px solid var(--line-strong);border-radius:12px;
+    font-weight:700;font-size:15px;color:var(--ink-2);text-align:center;
+    transition:border-color .15s,background .15s,color .15s;cursor:pointer;background:var(--surface);
+  }
+  .opt input{
+    width:18px;height:18px;flex:none;margin:0;cursor:pointer;
+    accent-color:var(--accent);
+  }
+  .opt[data-val="no"] input{accent-color:var(--amber)}
+  .opt[data-val="unknown"] input{accent-color:var(--muted)}
+  .opt:has(input:focus-visible){outline:3px solid var(--accent);outline-offset:2px}
+  .opt:has(input:checked){border-color:var(--accent);background:var(--accent-soft);color:var(--ink)}
+  .opt[data-val="no"]:has(input:checked){border-color:var(--amber);background:var(--amber-bg)}
+  .opt[data-val="unknown"]:has(input:checked){border-color:var(--muted);background:var(--surface-2)}
+  @media (max-width:420px){ .opt{font-size:14px;min-height:50px;gap:5px} .opt input{width:16px;height:16px} }
+
+  /* ---------- Submit ---------- */
+  .submit-area{margin-top:26px;text-align:center}
+  .btn-primary{
+    display:inline-flex;align-items:center;justify-content:center;gap:8px;
+    width:100%;max-width:440px;min-height:60px;padding:14px 28px;
+    background:var(--accent);color:#fff;border:none;border-radius:999px;
+    font-size:17px;font-weight:800;letter-spacing:.02em;
+    box-shadow:0 6px 18px rgba(9,84,72,.28);
+    transition:background .15s,transform .1s;
+  }
+  .btn-primary:hover{background:var(--accent-strong)}
+  .btn-primary:active{transform:scale(.99)}
+  @media (prefers-color-scheme: dark){ .btn-primary{color:#0b1512} .btn-primary:hover{color:#0b1512} }
+  .submit-hint{font-size:13.5px;color:var(--muted);margin-top:10px}
+  .submit-hint.warn{color:var(--red);font-weight:700}
+
+  /* ---------- Result ---------- */
+  .result{display:none;margin-top:34px}
+  .result.show{display:block}
+  .result-card{
+    background:var(--surface);border:1px solid var(--line);border-radius:20px;
+    box-shadow:var(--shadow);overflow:hidden;
+  }
+  .result-head{padding:26px 24px 20px;border-bottom:1px dashed var(--line-strong)}
+  .result-eyebrow{font-size:12.5px;font-weight:800;letter-spacing:.08em;color:var(--accent-strong);margin:0 0 8px}
+  .score-row{display:flex;align-items:center;gap:20px;flex-wrap:wrap}
+  .score-ring{
+    flex:none;width:104px;height:104px;border-radius:50%;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;
+    background:conic-gradient(var(--accent) calc(var(--pct)*1%), var(--surface-2) 0);
+    position:relative;
+  }
+  .score-ring::before{content:"";position:absolute;inset:9px;border-radius:50%;background:var(--surface)}
+  .score-ring .n{position:relative;font-size:34px;font-weight:800;line-height:1;font-family:"Noto Serif JP",serif}
+  .score-ring .d{position:relative;font-size:12px;color:var(--muted);font-weight:700}
+  .score-main{flex:1;min-width:220px}
+  .score-title{font-family:"Noto Serif JP",serif;font-size:clamp(21px,5vw,26px);font-weight:800;line-height:1.45;margin:0 0 6px}
+  .score-desc{margin:0;color:var(--ink-2);font-size:15px}
+  .score-counts{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
+  .score-counts span{font-size:13px;font-weight:700;border-radius:999px;padding:4px 12px;border:1px solid var(--line)}
+  .sc-yes{color:var(--green);background:var(--green-bg)}
+  .sc-no{color:var(--amber);background:var(--amber-bg)}
+  .sc-unk{color:var(--muted);background:var(--surface-2)}
+
+  .result-body{padding:22px 24px 26px}
+  .result-body h3{font-size:16.5px;margin:0 0 4px}
+  .result-body .sub{font-size:14px;color:var(--muted);margin:0 0 14px}
+  .all-ok{
+    background:var(--green-bg);border:1px solid var(--line);border-radius:12px;
+    padding:14px 16px;font-size:15px;font-weight:500;
+  }
+  .gap-list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px}
+  .gap-item{
+    display:flex;gap:12px;align-items:flex-start;
+    border:1px solid var(--line);border-radius:12px;padding:14px 16px;background:var(--surface);
+  }
+  .gap-num{
+    flex:none;width:28px;height:28px;border-radius:50%;margin-top:2px;
+    background:var(--amber-bg);color:var(--amber);border:1px solid var(--line);
+    display:flex;align-items:center;justify-content:center;font-size:13.5px;font-weight:800;
+  }
+  .gap-item.is-priority{border-color:var(--amber);background:var(--amber-bg)}
+  .gap-item.is-priority .gap-num{background:var(--amber);color:#fff;border-color:var(--amber)}
+  .gap-q{font-weight:700;font-size:15px;line-height:1.6;margin:0}
+  .gap-meta{display:flex;gap:6px;flex-wrap:wrap;margin-top:6px;align-items:center}
+  .ans-badge{font-size:11.5px;font-weight:800;border-radius:6px;padding:1px 8px}
+  .ans-no{background:var(--amber-bg);color:var(--amber);border:1px solid var(--amber)}
+  .ans-unk{background:var(--surface-2);color:var(--muted);border:1px solid var(--line-strong)}
+  .prio-badge{font-size:11.5px;font-weight:800;border-radius:6px;padding:1px 8px;background:var(--amber);color:#fff}
+  .gap-next{font-size:14px;color:var(--ink-2);margin:8px 0 0}
+  .gap-next b{color:var(--ink)}
+
+  .priority-note{
+    margin-top:16px;background:var(--accent-soft);border:1px solid var(--line);
+    border-radius:12px;padding:14px 16px;font-size:14.5px;
+  }
+  .priority-note b{color:var(--accent-strong)}
+
+  .result-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:22px}
+  .btn-ghost{
+    display:inline-flex;align-items:center;justify-content:center;gap:6px;
+    min-height:48px;padding:10px 20px;border-radius:999px;
+    background:transparent;color:var(--ink);border:1.5px solid var(--line-strong);
+    font-weight:700;font-size:14.5px;
+  }
+  .btn-ghost:hover{border-color:var(--accent);color:var(--accent-strong)}
+  .copy-done{font-size:13.5px;color:var(--green);font-weight:700;align-self:center;display:none}
+  .copy-done.show{display:inline}
+
+  /* ---------- Notes / sources ---------- */
+  .notes{margin-top:34px;display:flex;flex-direction:column;gap:16px}
+  .note-box{
+    background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:20px 22px;
+  }
+  .note-box h2{font-size:16px;margin:0 0 8px}
+  .note-box p,.note-box li{font-size:14.5px;color:var(--ink-2)}
+  .note-box p{margin:0}
+  .note-box p + p{margin-top:8px}
+  .note-box ul{margin:6px 0 0;padding-left:20px}
+  .note-box li + li{margin-top:6px}
+  .src-list{list-style:none;margin:8px 0 0;padding:0!important}
+  .src-list li{border-top:1px dashed var(--line);padding:10px 0}
+  .src-list li:first-child{border-top:none;padding-top:2px}
+  .src-list a{font-weight:700}
+  .src-list .src-desc{display:block;font-size:13px;color:var(--muted);margin-top:2px}
+  footer{margin-top:28px;text-align:center;font-size:12.5px;color:var(--muted)}
+
+  @media print{
+    .progress-sticky,.submit-area,.result-actions{display:none!important}
+    body{background:#fff}
+    .q-card,.result-card,.note-box,.law-note{box-shadow:none}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <!-- ===== Hero ===== -->
+  <header class="hero">
+    <span class="hero-tag">飲食店の経営者・店長向け</span>
+    <h1>カスハラ準備度<br />チェック<span class="accent">.</span></h1>
+    <p class="lead">
+      お客さまからの著しい迷惑行為（カスタマーハラスメント）への備えを、<strong>10の質問</strong>で確認します。
+      「はい」の数が、そのままお店の準備度です。答え終わると、<strong>足りないところ</strong>が一覧で分かります。
+    </p>
+    <ul class="chips">
+      <li>所要時間 <b>約3分</b></li>
+      <li>全 <b>10問</b>・3択</li>
+      <li>名前などの入力 <b>なし</b></li>
+      <li>結果はこのページ内だけに表示</li>
+    </ul>
+
+    <section class="law-note" aria-label="法律の背景">
+      <h2><span class="badge">背景</span>2026年10月1日から、対策が義務になりました</h2>
+      <p>
+        改正労働施策総合推進法により、2026年（令和8年）10月1日から、カスタマーハラスメント対策の措置を講じることが
+        <strong>すべての事業主の義務</strong>になりました。従業員を1人でも雇っていれば、規模にかかわらず対象です。
+      </p>
+      <p>
+        義務の中心は「現場の担当者に任せきりにしない仕組みづくり」。このチェックは、厚生労働省が示す取組をもとに、
+        飲食店で確認しやすい10項目に絞ったものです。
+      </p>
+    </section>
+  </header>
+
+  <!-- ===== Progress ===== -->
+  <div class="progress-sticky" aria-hidden="true">
+    <div class="progress-head">
+      <span>回答の進み具合</span>
+      <span><b id="progCount">0</b> / 10 問</span>
+    </div>
+    <div class="progress-track"><div class="progress-fill" id="progFill"></div></div>
+  </div>
+
+  <!-- ===== Questions ===== -->
+  <form id="checkForm" novalidate>
+    <div class="q-list" id="qList"></div>
+
+    <div class="submit-area">
+      <button type="submit" class="btn-primary" id="submitBtn">結果を見る</button>
+      <p class="submit-hint" id="submitHint">10問すべてに答えると、結果が表示されます。</p>
+    </div>
+  </form>
+
+  <!-- ===== Result ===== -->
+  <section class="result" id="result" aria-live="polite" aria-label="チェック結果">
+    <div class="result-card">
+      <div class="result-head">
+        <p class="result-eyebrow">あなたの結果</p>
+        <div class="score-row">
+          <div class="score-ring" id="scoreRing" style="--pct:0">
+            <span class="n" id="scoreNum">0</span>
+            <span class="d">/ 10 問中</span>
+          </div>
+          <div class="score-main">
+            <p class="score-title" id="scoreTitle"></p>
+            <p class="score-desc" id="scoreDesc"></p>
+            <div class="score-counts">
+              <span class="sc-yes" id="cntYes"></span>
+              <span class="sc-no" id="cntNo"></span>
+              <span class="sc-unk" id="cntUnk"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="result-body">
+        <h3>足りないところ</h3>
+        <p class="sub">「はい」ではなかった質問です。各項目に、最初の一歩の目安を付けています。</p>
+        <div id="gapArea"></div>
+        <div class="priority-note" id="priorityNote"></div>
+        <div class="result-actions">
+          <button type="button" class="btn-ghost" id="copyBtn">結果をテキストでコピー</button>
+          <button type="button" class="btn-ghost" id="resetBtn">回答をリセット</button>
+          <span class="copy-done" id="copyDone">コピーしました</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Notes ===== -->
+  <div class="notes">
+    <section class="note-box" aria-label="このチェックについて">
+      <h2>このチェックについて（大切な注意）</h2>
+      <p>
+        これはお店の備えを自分で確認するための<strong>自己チェック</strong>です。
+        法令に適合していることの<strong>認定や保証ではありません</strong>。
+        点数が高くても、実際の運用や記録の残し方によって評価は変わります。
+      </p>
+      <p>
+        個別のケースで判断に迷うときや、実際にトラブルが起きているときは、
+        社会保険労務士・弁護士などの専門家、または都道府県労働局の相談窓口に相談してください。
+        緊急性の高いトラブルは、ためらわず警察へ相談を。
+      </p>
+    </section>
+
+    <section class="note-box" aria-label="出典・公式情報">
+      <h2>出典・公式情報</h2>
+      <p>このチェックの項目と背景は、以下の公式情報をもとにしています。最新の内容は各ページで確認してください。</p>
+      <ul class="src-list">
+        <li>
+          <a href="https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/koyou_roudou/koyoukintou/seisaku06/index.html" target="_blank" rel="noopener">厚生労働省「職場におけるハラスメントの防止のために」</a>
+          <span class="src-desc">カスハラ対策が2026年10月1日から全事業主の義務になったこと、事業主に求められる措置の全体像。</span>
+        </li>
+        <li>
+          <a href="https://www.no-harassment.mhlw.go.jp/foundation/law-amendment/" target="_blank" rel="noopener">あかるい職場応援団（厚生労働省）「改正労働施策総合推進法等 特設ページ」</a>
+          <span class="src-desc">改正法と指針の内容に沿った対策の解説。事業主向けの特設ページ。</span>
+        </li>
+        <li>
+          <a href="https://www.mhlw.go.jp/content/11900000/001662576.pdf" target="_blank" rel="noopener">厚生労働省リーフレット「令和8年10月1日からハラスメント対策が強化されました！」（PDF）</a>
+          <span class="src-desc">カスハラの定義と、事業主が必ず講じなければならない措置の一覧。</span>
+        </li>
+        <li>
+          <a href="https://www.mhlw.go.jp/content/11901000/001591307.pdf" target="_blank" rel="noopener">厚生労働省「カスタマーハラスメント防止指針」（PDF）</a>
+          <span class="src-desc">事業主が雇用管理上講ずべき措置等についての指針（令和8年厚生労働省告示第51号）。相談体制・事実確認・再発防止・悪質な事案への対処などの細目の根拠。</span>
+        </li>
+      </ul>
+    </section>
+  </div>
+
+  <footer>カスハラ準備度チェック（飲食店向け）／ 回答は送信されず、このページの中だけで集計されます。</footer>
+</div>
+
+<script>
+(function(){
+  "use strict";
+
+  var QUESTIONS = [
+    { n:1, root:"① 方針を決めて伝える",
+      text:"カスハラを許さず従業員を守る方針を文書で決め、従業員全員に伝えている",
+      next:"A4判1枚でよいので方針文を作り、レジ裏や休憩スペースなど従業員の目に入る場所に貼ることから。" },
+    { n:2, root:"② 相談体制と担当者の準備",
+      text:"相談窓口と担当者（店長・責任者など）を決めて従業員に知らせ、担当者が迷わず対応できるよう手順やマニュアルを用意している",
+      next:"担当者の名前と相談の方法（口頭・メモ・LINEなど）を決めて、シフト表の近くに掲示する。",
+      priority:true },
+    { n:3, root:"⑤ プライバシーと不利益の禁止",
+      text:"相談したことを理由に不利益な扱いをしないことと、相談内容の秘密を守るルールを決めている",
+      next:"「相談してもシフトや評価で不利益にしない」「相談内容は関係者以外に話さない」の2点を文書に書き、朝礼などで一度伝える。",
+      priority:true },
+    { n:4, root:"③ 事実確認と再発防止",
+      text:"起きたときの事実確認の手順（日時・場所・言動・対応者を記録する様式）があり、記録を再発防止に活かす決まりがある",
+      next:"記録用紙のひな形を1枚用意する。項目は「日時／場所／相手の言動／対応した人／その後の対応」の5つで十分。" },
+    { n:5, root:"④ 悪質な場合の対処体制",
+      text:"対応中に担当者一人に任せず、責任者・上司に代わってもらうルールがある",
+      next:"「長引いたら交代する」「怒声が続いたら店長が代わる」など、交代の合図と条件を決めて全員で共有する。",
+      priority:true },
+    { n:6, root:"④ 悪質な事案への対処",
+      text:"特に悪質な場合（暴力・長時間の拘束など）にどう対応するか（対応を終える目安を含む）をあらかじめ決めている",
+      next:"「説明を繰り返しても平行線なら一度区切る」など、対応を終える目安を2〜3個だけ決めておく。" },
+    { n:7, root:"① 方針を決めて伝える",
+      text:"正当な苦情とカスハラの区別の目安を、従業員と共有している",
+      next:"「料理の不満は苦情として受け止める／暴言・威嚇・長時間の拘束は一線を引く」のように、自店の例で目安を話し合う。" },
+    { n:8, root:"③ 起きたときの対応",
+      text:"対応のあと、従業員の休憩・交代・相談などのケアの手順がある",
+      next:"対応後は「いったんバックヤードで休憩」「その日のうちに店長が声をかける」を決まりにしておく。" },
+    { n:9, root:"④ 悪質な場合の対処体制",
+      text:"録音・録画など抑止の手段がある場合、その目的と個人情報への配慮を決め・伝えている",
+      next:"防犯カメラや録音を使うなら「トラブル対応のため」と目的を決め、従業員とお客さまの両方に伝わる形にする。" },
+    { n:10, root:"④ 悪質な場合の対処体制",
+      text:"対面トラブルで周囲のお客さまの安全を守り、必要なら警察等へ相談する手順がある",
+      next:"「他のお客さまを遠ざける／危険を感じたらすぐ110番」の2点を決め、最寄りの警察署の連絡先をレジ近くに置く。" }
+  ];
+
+  var qList = document.getElementById("qList");
+  var progCount = document.getElementById("progCount");
+  var progFill = document.getElementById("progFill");
+  var form = document.getElementById("checkForm");
+  var submitHint = document.getElementById("submitHint");
+  var resultEl = document.getElementById("result");
+
+  // Build question cards
+  QUESTIONS.forEach(function(q){
+    var card = document.createElement("div");
+    card.className = "q-card";
+    card.id = "qcard-" + q.n;
+    card.setAttribute("role", "group");
+    card.setAttribute("aria-labelledby", "qtext-" + q.n);
+
+    card.innerHTML =
+      '<div class="q-top">' +
+        '<div class="q-num" aria-hidden="true">' + q.n + '</div>' +
+        '<div class="q-body">' +
+          '<span class="q-root">' + q.root + '</span>' +
+          '<p class="q-text" id="qtext-' + q.n + '">' + q.text + '</p>' +
+          '<p class="q-missing-msg">この質問が未回答です</p>' +
+        '</div>' +
+      '</div>' +
+      '<div class="opts">' +
+        optHtml(q.n, "yes", "はい") +
+        optHtml(q.n, "no", "いいえ") +
+        optHtml(q.n, "unknown", "わからない") +
+      '</div>';
+    qList.appendChild(card);
+  });
+
+  function optHtml(n, val, label){
+    return '<label class="opt" data-val="' + val + '">' +
+      '<input type="radio" name="q' + n + '" value="' + val + '">' +
+      '<span>' + label + '</span>' +
+    '</label>';
+  }
+
+  function getAnswers(){
+    return QUESTIONS.map(function(q){
+      var checked = form.querySelector('input[name="q' + q.n + '"]:checked');
+      return checked ? checked.value : null;
+    });
+  }
+
+  function updateProgress(){
+    var answers = getAnswers();
+    var done = answers.filter(function(a){ return a !== null; }).length;
+    progCount.textContent = done;
+    progFill.style.width = (done * 10) + "%";
+    QUESTIONS.forEach(function(q, i){
+      var card = document.getElementById("qcard-" + q.n);
+      if (answers[i] !== null){
+        card.classList.add("is-answered");
+        card.classList.remove("is-missing");
+      } else {
+        card.classList.remove("is-answered");
+      }
+    });
+    if (done === 10){
+      submitHint.textContent = "全問に回答しました。「結果を見る」を押してください。";
+      submitHint.classList.remove("warn");
+    }
+    return answers;
+  }
+
+  form.addEventListener("change", updateProgress);
+
+  var lastResult = null;
+
+  form.addEventListener("submit", function(e){
+    e.preventDefault();
+    var answers = getAnswers();
+    var firstMissing = answers.indexOf(null);
+    if (firstMissing !== -1){
+      QUESTIONS.forEach(function(q, i){
+        var card = document.getElementById("qcard-" + q.n);
+        card.classList.toggle("is-missing", answers[i] === null);
+      });
+      submitHint.textContent = "未回答の質問があります（あと " + answers.filter(function(a){return a===null;}).length + " 問）。赤く囲まれた質問に答えてください。";
+      submitHint.classList.add("warn");
+      var target = document.getElementById("qcard-" + QUESTIONS[firstMissing].n);
+      target.scrollIntoView({ behavior:"smooth", block:"center" });
+      return;
+    }
+    showResult(answers);
+  });
+
+  function showResult(answers){
+    var yes = answers.filter(function(a){ return a === "yes"; }).length;
+    var no = answers.filter(function(a){ return a === "no"; }).length;
+    var unk = answers.filter(function(a){ return a === "unknown"; }).length;
+
+    document.getElementById("scoreNum").textContent = yes;
+    document.getElementById("scoreRing").style.setProperty("--pct", yes * 10);
+    document.getElementById("cntYes").textContent = "はい " + yes;
+    document.getElementById("cntNo").textContent = "いいえ " + no;
+    document.getElementById("cntUnk").textContent = "わからない " + unk;
+
+    var title, desc;
+    if (yes >= 8){
+      title = "土台は概ねあります";
+      desc = "基本の備えはできています。このあとの「足りないところ」から1つずつ埋めていけば、現場で迷いにくくなります。決めたルールが実際の対応で使えたか、ときどき振り返ってください。";
+    } else if (yes >= 5){
+      title = "基礎はあるが、穴があります";
+      desc = "できている部分と、手つかずの部分が混ざっています。まずは問2（相談窓口）・問3（不利益禁止と秘密保持）・問5（交代ルール）の体制から固めると、従業員が安心して相談・対応できるようになります。";
+    } else {
+      title = "まずは3点から始めましょう";
+      desc = "いきなり全部を揃える必要はありません。まず問1の方針・問2の窓口・問5の交代ルールの3点から始めてください。この3つがあるだけで「一人で抱え込む」状態は大きく減ります。";
+    }
+    document.getElementById("scoreTitle").textContent = title;
+    document.getElementById("scoreDesc").textContent = desc;
+
+    // Gap list
+    var gapArea = document.getElementById("gapArea");
+    var gaps = QUESTIONS.filter(function(q, i){ return answers[i] !== "yes"; });
+
+    if (gaps.length === 0){
+      gapArea.innerHTML = '<div class="all-ok">全10問が「はい」でした。現時点の自己チェックでは、足りない項目はありません。制度や店の体制が変わったとき、トラブルが起きたあとに見直してください。</div>';
+    } else {
+      var ul = document.createElement("ul");
+      ul.className = "gap-list";
+      gaps.forEach(function(q){
+        var ans = answers[q.n - 1];
+        var li = document.createElement("li");
+        li.className = "gap-item" + (q.priority ? " is-priority" : "");
+        li.innerHTML =
+          '<div class="gap-num">' + q.n + '</div>' +
+          '<div>' +
+            '<p class="gap-q">問' + q.n + '：' + q.text + '</p>' +
+            '<div class="gap-meta">' +
+              (ans === "no"
+                ? '<span class="ans-badge ans-no">あなたの回答：いいえ</span>'
+                : '<span class="ans-badge ans-unk">あなたの回答：わからない</span>') +
+              (q.priority ? '<span class="prio-badge">まずここから</span>' : '') +
+              '<span style="font-size:11.5px;color:var(--muted);font-weight:700">' + q.root + '</span>' +
+            '</div>' +
+            '<p class="gap-next"><b>最初の一歩：</b>' + q.next + '</p>' +
+          '</div>';
+        ul.appendChild(li);
+      });
+      gapArea.innerHTML = "";
+      gapArea.appendChild(ul);
+    }
+
+    // Priority note
+    var pNote = document.getElementById("priorityNote");
+    var missingPriority = gaps.filter(function(q){ return q.priority; }).map(function(q){ return "問" + q.n; });
+    if (missingPriority.length > 0){
+      pNote.style.display = "block";
+      pNote.innerHTML = "<b>優先の目安：</b>「まずここから」と付けた " + missingPriority.join("・") +
+        " は、従業員が相談できて、一人で抱え込まないための土台です。他の項目より先に手をつけてください。";
+    } else if (gaps.length > 0){
+      pNote.style.display = "block";
+      pNote.innerHTML = "<b>進め方の目安：</b>土台になる問2・問3・問5はすでに「はい」です。残りの項目は、実際に起きやすい場面（電話・レジ前・閉店間際など）から順に埋めていくと進めやすくなります。";
+    } else {
+      pNote.style.display = "none";
+      pNote.innerHTML = "";
+    }
+
+    lastResult = { yes: yes, no: no, unk: unk, title: title, gaps: gaps, answers: answers.slice() };
+
+    resultEl.classList.add("show");
+    setTimeout(function(){
+      resultEl.scrollIntoView({ behavior:"smooth", block:"start" });
+    }, 60);
+  }
+
+  document.getElementById("resetBtn").addEventListener("click", function(){
+    form.reset();
+    resultEl.classList.remove("show");
+    lastResult = null;
+    document.getElementById("copyDone").classList.remove("show");
+    submitHint.textContent = "10問すべてに答えると、結果が表示されます。";
+    submitHint.classList.remove("warn");
+    updateProgress();
+    window.scrollTo({ top:0, behavior:"smooth" });
+  });
+
+  document.getElementById("copyBtn").addEventListener("click", function(){
+    if (!lastResult) return;
+    var lines = [];
+    lines.push("カスハラ準備度チェック結果（飲食店向け）");
+    lines.push("「はい」" + lastResult.yes + " / 10問（いいえ " + lastResult.no + "・わからない " + lastResult.unk + "）");
+    lines.push("判定：" + lastResult.title);
+    if (lastResult.gaps.length > 0){
+      lines.push("");
+      lines.push("足りないところ：");
+      lastResult.gaps.forEach(function(q){
+        var a = lastResult.answers[q.n - 1] === "no" ? "いいえ" : "わからない";
+        lines.push("・問" + q.n + "（" + a + "）" + q.text);
+      });
+    } else {
+      lines.push("足りないところ：なし（全問「はい」）");
+    }
+    lines.push("");
+    lines.push("※これは自己チェックであり、法令適合の認定・保証ではありません。");
+    var text = lines.join("\n");
+
+    function done(){
+      var el = document.getElementById("copyDone");
+      el.classList.add("show");
+      setTimeout(function(){ el.classList.remove("show"); }, 2500);
+    }
+    if (navigator.clipboard && navigator.clipboard.writeText){
+      navigator.clipboard.writeText(text).then(done, function(){ fallbackCopy(text); done(); });
+    } else {
+      fallbackCopy(text); done();
+    }
+  });
+
+  function fallbackCopy(text){
+    var ta = document.createElement("textarea");
+    ta.value = text;
+    ta.style.position = "fixed"; ta.style.opacity = "0";
+    document.body.appendChild(ta);
+    ta.select();
+    try { document.execCommand("copy"); } catch(e){}
+    document.body.removeChild(ta);
+  }
+
+  updateProgress();
+})();
+</script>
+</body>
+</html>
